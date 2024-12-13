@@ -30,3 +30,33 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+class Buy(models.Model):
+    name=models.CharField(max_length=200)
+    phone= models.CharField(max_length=40)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE, null=True)
+    All_size=(
+        ('36','36'),
+        ('37','37'),
+        ('37','37'),
+        ('38','38'),
+        ('39','39'),
+        ('40','40'),
+        ('41','41'),
+        ('42','42'),
+        ('43','43'),
+        ('45','45'),
+    )
+    size= models.CharField(max_length=100, choices=All_size)
+    All_values=(
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+    )
+    how = models.CharField(max_length=100, choices=All_values)
+    map = models.TextField()
+    email = models.EmailField(blank=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.product}"

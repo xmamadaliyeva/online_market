@@ -1,9 +1,11 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from store.views import home, product
+
+from store.views import *
 
 urlpatterns = [
-    path('', home, name = 'name'),
-    path('products/<slug>/',product,name='products'),
+    path('', home, name='home'),
+    path('products/<slug:slug>/', product, name='product_detail'),
+    path('single/<int:pk>/', single, name='single'),
 ]
